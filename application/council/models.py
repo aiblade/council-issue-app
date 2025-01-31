@@ -28,6 +28,7 @@ class Issue(models.Model):
     ]
 
     title = models.CharField(max_length=200)
+    ai_summary = models.TextField()
     description = models.TextField()
 
     # Use a CharField with choices to keep track of the issue category.
