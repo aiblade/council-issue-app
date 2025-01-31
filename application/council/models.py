@@ -6,13 +6,6 @@ from django.conf import settings
 class Issue(models.Model):
     """
     Represents a logged issue in the council reporting system.
-    Examples of issue categories might be:
-      - Potholes
-      - Street lighting
-      - Graffiti
-      - Anti-Social behaviour
-      - Fly-Tipping
-      - Blocked Drains
     """
 
     # Enumerated choices for categories:
@@ -44,12 +37,7 @@ class Issue(models.Model):
         default='OTHER'
     )
 
-    # The user who reported this issue (public or staff).
-    reporter = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
-        related_name='reported_issues'
-    )
+    reporter = models.EmailField()
 
     # The staff member responsible for addressing the issue.
     assigned_to = models.ForeignKey(
