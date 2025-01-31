@@ -1,4 +1,13 @@
 from django.shortcuts import render
+from django.views.generic import ListView, DetailView
+from .models import Issue
 
-def home(request):
-    return render(request, 'home.html', {})
+
+class IssuesView(ListView):
+    model = Issue
+    template_name = "issues.html"
+
+class IssueDetailView(DetailView):
+    model = Issue
+    template_name = "issue_details.html"
+    
