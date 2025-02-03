@@ -2,7 +2,8 @@
 
 <ul>
 {% for issue in object_list %}
-    <li>{{ issue.title }}
-    {{ issue.description }}</li>
+    <li><a href="{% url 'issue-detail' issue.pk %}">{{ issue.title }}</a></b></br>
+    {{ issue.ai_summary }}</br>
+    {{ issue.assigned_to }}</li>
 {% endfor %}
 </ul>
