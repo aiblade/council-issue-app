@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .models import Issue
 
 
@@ -13,3 +13,7 @@ class IssueDetailView(DetailView):
     model = Issue
     template_name = "issue_details.html"
     
+class CreateIssueView(CreateView):
+    model = Issue
+    template_name = "create_issue.html"
+    fields = "__all__"
