@@ -38,7 +38,7 @@ class Issue(models.Model):
         default='OTHER'
     )
 
-    reporter = models.EmailField()
+    email = models.EmailField()
 
     # The staff member responsible for addressing the issue.
     assigned_to = models.ForeignKey(

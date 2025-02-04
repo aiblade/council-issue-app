@@ -2,11 +2,11 @@
 {% block content %}
 
 <h1>Create Issue</h1>
-
+</br></br>
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button>Post</button>
+    <button class="btn btn-secondary">Post</button>
 </form>
 
 {% endblock %}
