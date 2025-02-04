@@ -59,7 +59,6 @@ class Issue(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    closed_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.title} (Status: {self.get_status_display()})"
