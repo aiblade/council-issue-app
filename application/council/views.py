@@ -16,4 +16,4 @@ class IssueDetailView(DetailView):
 class CreateIssueView(CreateView):
     model = Issue
     template_name = "create_issue.html"
-    fields = "__all__"
+    fields = ["title", "description", "category", "email"]
