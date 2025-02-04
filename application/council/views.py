@@ -16,4 +16,4 @@ class IssueDetailView(DetailView):
 class CreateIssueView(CreateView):
     model = Issue
     template_name = "create_issue.html"
-    fields = ["title", "ai_summary", "description", "category", "reporter"]
+    fields = ["title", "description", "category", "email"]

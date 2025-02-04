@@ -1,6 +1,7 @@
 from django.db import models
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 
 
 class Issue(models.Model):
@@ -63,3 +64,5 @@ class Issue(models.Model):
     def __str__(self):
         return f"{self.title} (Status: {self.get_status_display()})"
 
+    def get_absolute_url(self):
+        return reverse("issue-detail", args=(str(self.id)))
