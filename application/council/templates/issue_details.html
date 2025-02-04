@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+    Issue Details
+{% endblock %}
+{% block content %}
+
+<h1>{{ issue.title }}</h1>
+<hr>
+<p>{{ issue.ai_summary }}</p>
+<p>{{ issue.description }}</p>
+<p>{{ issue.get_category_display }}</p>
+<p>{{ issue.reporter }}</p>
+<p>{{ issue.assigned_to }}</p>
+<p>{{ issue.get_status_display }}</p>
+<p>{{ issue.created_at }}</p>
+<p>{{ issue.updated_at }}</p>
+<br/><br/>
+<a href="{% url 'home' %}">Back</a>
+
+{% endblock %}
