@@ -4,6 +4,7 @@
 {% endblock %}
 {% block content %}
 
+{% if user.is_authenticated %}
 <h1>{{ issue.title }}</h1>
 <a href="{% url 'update-issue' issue.pk %}">(Edit)</a> - <a href="{% url 'delete-issue' issue.pk %}">(Delete)</a>
 <hr>
@@ -17,5 +18,11 @@
 <p>{{ issue.updated_at }}</p>
 <br/><br/>
 <a href="{% url 'home' %}">Back</a>
+
+{% else %}
+
+<h1>Unauthorized</h1>
+
+{% endif %}
 
 {% endblock %}
