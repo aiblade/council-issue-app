@@ -8,6 +8,7 @@
     <li><a href="{% url 'issue-detail' issue.pk %}">{{ issue.title }}</a></b></br>
     {{ issue.ai_summary }}</br>
     {{ issue.assigned_to }} - <a href="{% url 'update-issue' issue.pk %}">(Edit)</a>
+     - <a href="{% url 'delete-issue' issue.pk %}">(Delete)</a>
     </li>
 {% endfor %}
 </ul>

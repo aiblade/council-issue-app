@@ -5,7 +5,7 @@
 {% block content %}
 
 <h1>{{ issue.title }}</h1>
-<a href="{% url 'update-issue' issue.pk %}">(Edit)</a>
+<a href="{% url 'update-issue' issue.pk %}">(Edit)</a> - <a href="{% url 'delete-issue' issue.pk %}">(Delete)</a>
 <hr>
 <p>{{ issue.ai_summary }}</p>
 <p>{{ issue.description }}</p>
