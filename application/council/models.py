@@ -47,8 +47,7 @@ class Issue(models.Model):
         on_delete=models.SET_NULL,
         related_name='assigned_issues',
         null=True,
-        blank=True,
-        help_text="Assign a staff user to resolve this issue."
+        blank=True
     )
 
     # Track the current status of the issue using the choice field.
