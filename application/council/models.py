@@ -1,6 +1,7 @@
 from django.db import models
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 
 
 class Issue(models.Model):
@@ -38,7 +39,7 @@ class Issue(models.Model):
         default='OTHER'
     )
 
-    reporter = models.EmailField()
+    email = models.EmailField()
 
     # The staff member responsible for addressing the issue.
     assigned_to = models.ForeignKey(
@@ -46,8 +47,7 @@ class Issue(models.Model):
         on_delete=models.SET_NULL,
         related_name='assigned_issues',
         null=True,
-        blank=True,
-        help_text="Assign a staff user to resolve this issue."
+        blank=True
     )
 
     # Track the current status of the issue using the choice field.
@@ -59,8 +59,9 @@ class Issue(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    closed_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.title} (Status: {self.get_status_display()})"
 
+    def get_absolute_url(self):
+        return reverse("issue-detail", kwargs={'pk': self.id})
