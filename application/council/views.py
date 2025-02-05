@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Issue
-from .forms import IssueForm
+from .forms import IssueForm, EditForm
 
 
 class IssuesView(ListView):
@@ -18,3 +18,8 @@ class CreateIssueView(CreateView):
     model = Issue
     form_class = IssueForm
     template_name = "create_issue.html"
+
+class UpdateIssueView(UpdateView):
+    model = Issue
+    form_class = EditForm
+    template_name = "update_issue.html"
