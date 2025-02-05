@@ -7,9 +7,8 @@ from django.urls import reverse_lazy
 
 class IssuesView(ListView):
     model = Issue
-    template_name = "issues.html"
+    template_name = "home.html"
     ordering = ["-id"]
-
 
 class IssueDetailView(DetailView):
     model = Issue

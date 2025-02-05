@@ -4,6 +4,8 @@ Delete Issue
 {% endblock %}
 {% block content %}
 
+{% if user.is_authenticated %}
+
 <h1>Delete Issue</h1>
 </br></br>
 <h3>Delete: {{ issue.title }}</h3>
@@ -14,5 +16,11 @@ Delete Issue
         <button class="btn btn-secondary">Delete</button>
     </form>
 </div>
+
+{% else %}
+
+<h1>Unauthorized</h1>
+
+{% endif %}
 
 {% endblock %}
