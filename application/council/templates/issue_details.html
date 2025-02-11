@@ -1,28 +1,38 @@
 {% extends 'base.html' %}
 {% block title %}
-    Issue Details
+Issue Details
 {% endblock %}
 {% block content %}
-
 {% if user.is_authenticated %}
-<h1>{{ issue.title }}</h1>
-<a href="{% url 'update-issue' issue.pk %}">(Edit)</a> - <a href="{% url 'delete-issue' issue.pk %}">(Delete)</a>
-<hr>
-<p>{{ issue.ai_summary }}</p>
-<p>{{ issue.description }}</p>
-<p>{{ issue.get_category_display }}</p>
-<p>{{ issue.reporter }}</p>
-<p>{{ issue.assigned_to }}</p>
-<p>{{ issue.get_status_display }}</p>
-<p>{{ issue.created_at }}</p>
-<p>{{ issue.updated_at }}</p>
-<br/><br/>
-<a href="{% url 'home' %}">Back</a>
-
+<div class="card shadow-sm">
+  <div class="card-header bg-secondary text-white">
+    <h2><i class="bi bi-info-circle"></i> {{ issue.title }}</h2>
+  </div>
+  <div class="card-body">
+    <p><strong>Summary:</strong> {{ issue.ai_summary }}</p>
+    <p><strong>Description:</strong> {{ issue.description }}</p>
+    <p><strong>Category:</strong> {{ issue.get_category_display }}</p>
+    <p><strong>Reporter:</strong> {{ issue.reporter }}</p>
+    <p><strong>Assigned to:</strong> {{ issue.assigned_to }}</p>
+    <p><strong>Status:</strong> {{ issue.get_status_display }}</p>
+    <p><strong>Created At:</strong> {{ issue.created_at }}</p>
+    <p><strong>Updated At:</strong> {{ issue.updated_at }}</p>
+    <div class="mt-3">
+      <a href="{% url 'update-issue' issue.pk %}" class="btn btn-outline-primary me-2">
+        <i class="bi bi-pencil"></i> Edit
+      </a>
+      <a href="{% url 'delete-issue' issue.pk %}" class="btn btn-outline-danger me-2">
+        <i class="bi bi-trash"></i> Delete
+      </a>
+      <a href="{% url 'home' %}" class="btn btn-secondary">
+        <i class="bi bi-arrow-left"></i> Back
+      </a>
+    </div>
+  </div>
+</div>
 {% else %}
-
-<h1>Unauthorized</h1>
-
+<div class="alert alert-danger">
+  <h1>Unauthorized</h1>
+</div>
 {% endif %}
-
 {% endblock %}

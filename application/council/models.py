@@ -25,7 +25,6 @@ class Issue(models.Model):
         ('OPEN', 'Open'),
         ('IN_PROGRESS', 'In Progress'),
         ('RESOLVED', 'Resolved'),
-        ('CLOSED', 'Closed'),
     ]
 
     title = models.CharField(max_length=200)
@@ -64,4 +63,4 @@ class Issue(models.Model):
         return f"{self.title} (Status: {self.get_status_display()})"
 
     def get_absolute_url(self):
-        return reverse("issue-detail", kwargs={'pk': self.id})
+        return reverse('home')

@@ -1,16 +1,20 @@
 {% extends 'base.html' %}
 {% block title %}
-Login{% endblock %}
+Login
+{% endblock %}
 {% block content %}
-
-<h1>Login</h1>
-</br></br>
-<div class="form-group">
+<div class="card shadow-sm">
+  <div class="card-header bg-primary text-white">
+    <h2><i class="bi bi-box-arrow-in-right"></i> Login</h2>
+  </div>
+  <div class="card-body">
     <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-secondary">Login</button>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">
+        <i class="bi bi-check-circle"></i> Login
+      </button>
     </form>
+  </div>
 </div>
-
 {% endblock %}

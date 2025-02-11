@@ -3,23 +3,24 @@
 Update Issue
 {% endblock %}
 {% block content %}
-
 {% if user.is_authenticated %}
-
-<h1>Update Issue</h1>
-</br></br>
-<div class="form-group">
+<div class="card shadow-sm">
+  <div class="card-header bg-warning text-white">
+    <h2><i class="bi bi-pencil-square"></i> Update Issue</h2>
+  </div>
+  <div class="card-body">
     <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-secondary">Update</button>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-warning">
+        <i class="bi bi-check-circle"></i> Update
+      </button>
     </form>
+  </div>
 </div>
-
 {% else %}
-
-<h1>Unauthorized</h1>
-
+<div class="alert alert-danger">
+  <h1>Unauthorized</h1>
+</div>
 {% endif %}
-
 {% endblock %}

@@ -1,6 +1,7 @@
 from django import forms
 from .models import Issue
 
+
 class IssueForm(forms.ModelForm):
     class Meta:
         model = Issue
@@ -16,10 +17,11 @@ class IssueForm(forms.ModelForm):
 class EditForm(forms.ModelForm):
     class Meta:
         model = Issue
-        fields = ["title", "description", "category", "email", "assigned_to", "status"]
+        fields = ["title", "ai_summary", "description", "category", "email", "assigned_to", "status"]
 
         widgets = {
             "title": forms.TextInput(attrs={"class": "form-control", "placeholder": "Issue title"}),
+            "ai_summary": forms.Textarea(attrs={"class": "form-control", "placeholder": "AI summary of the issue"}),
             "category": forms.Select(attrs={"class": "form-control"}),
             "description": forms.Textarea(attrs={"class": "form-control", "placeholder": "Detailed description of the issue"}),
             "email": forms.TextInput(attrs={"class": "form-control", "placeholder": "Enter your email address here"}),
