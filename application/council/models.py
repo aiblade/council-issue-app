@@ -64,4 +64,4 @@ class Issue(models.Model):
         return f"{self.title} (Status: {self.get_status_display()})"
 
     def get_absolute_url(self):
-        return reverse("issue-detail", kwargs={'pk': self.id})
+        return reverse('home')
