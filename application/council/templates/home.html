@@ -1,33 +1,63 @@
 {% extends 'base.html' %}
+{% block title %}
+Home
+{% endblock %}
 {% block content %}
-
 {% if user.is_authenticated %}
-
-<h1>Issues</h1>
-<ul>
-{% for issue in object_list %}
-    <li><a href="{% url 'issue-detail' issue.pk %}">{{ issue.title }}</a></b></br>
-    {{ issue.ai_summary }}</br>
-    {{ issue.assigned_to }}
-
-    - <a href="{% url 'update-issue' issue.pk %}">(Edit)</a>
-     - <a href="{% url 'delete-issue' issue.pk %}">(Delete)</a>
-    </li>
-{% endfor %}
-</ul>
-
+<h1 class="mb-4"><i class="bi bi-list-check"></i> Issues</h1>
+<div class="list-group">
+  {% for issue in object_list %}
+  <div class="list-group-item list-group-item-action mb-3">
+    <div class="d-flex w-100 justify-content-between align-items-center">
+      <h5 class="mb-1">{{ issue.title }}</h5>
+      <small>{{ issue.created_at|date:"M d, Y" }}</small>
+    </div>
+    <p class="mb-1"><i>AI Summary - </i>{{ issue.ai_summary|truncatewords:20 }}</p>
+    <small>
+      <i class="bi bi-person"></i> {{ issue.assigned_to }}
+      {% if issue.get_status_display %}
+      - <span class="badge bg-info text-dark">{{ issue.get_status_display }}</span>
+      {% endif %}
+    </small>
+    <div class="mt-2">
+      <a href="{% url 'update-issue' issue.pk %}" class="btn btn-sm btn-outline-primary me-2">
+        <i class="bi bi-pencil"></i> Edit
+      </a>
+      <a href="{% url 'delete-issue' issue.pk %}" class="btn btn-sm btn-outline-danger">
+        <i class="bi bi-trash"></i> Delete
+      </a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 {% else %}
-<h1>Submit an issue to Chalkstone Council</h1>
-</br>
-Welcome to the Chalkstone Council Issue Tracker. Here, you can submit any issues or concerns that you would like the council to address.</br></br>
-Whether it's a pothole on your street, a broken streetlight, or any other community-related issue, we are here to help.</br></br>
-Your feedback is valuable to us and helps improve our community. Please provide as much detail as possible when submitting an issue to ensure a timely and effective response from the council.</br></br>
-<b>Click the button below to get started</b>
-</br></br>
-<button class="btn btn-secondary">
-    <a href="{% url 'create-issue' %}">Create Issue</a>
-</button>
-</br></br>
-{% endif%}
-
+<div class="card shadow-sm">
+  <div class="card-header bg-info text-white">
+    <h2><i class="bi bi-info-circle"></i> Welcome</h2>
+  </div>
+  <div class="card-body">
+    <h1>Submit an issue to Chalkstone Council</h1>
+    <p>
+      Welcome to the Chalkstone Council Issue Tracker. Here, you can submit any issues or concerns that you would like the council to address.
+      Whether it's a pothole on your street, a broken streetlight, or any other community-related issue, we are here to help.
+      Your feedback is valuable and helps improve our community.
+    </p>
+    <p>
+      To get started, click the button below to create a new issue.
+      You will need the following information at hand:
+    </p>
+    <b>
+        <ul>
+            <li>Title</li>
+            <li>Description</li>
+            <li>Category</li>
+            <li>Email</li>
+        </ul>
+    </b>
+    <a href="{% url 'create-issue' %}" class="btn btn-primary">
+      <i class="bi bi-plus-circle"></i> Create Issue
+    </a>
+  </div>
+</div>
+{% endif %}
 {% endblock %}
