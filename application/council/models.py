@@ -60,7 +60,13 @@ class Issue(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
+        """
+        Return a string representation of the issue.
+        """
         return f"{self.title} (Status: {self.get_status_display()})"
 
     def get_absolute_url(self):
+        """
+        Return the URL to the issue detail view.
+        """
         return reverse('home')
