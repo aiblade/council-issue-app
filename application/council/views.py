@@ -7,17 +7,29 @@ from aisummary.utils import generate_ai_summary_async
 
 
 class IssuesView(ListView):
+    """
+    The view for the home page, which displays a list of all issues.
+    """
+
     model = Issue
     template_name = "home.html"
     ordering = ["-id"]
 
 
 class IssueDetailView(DetailView):
+    """
+    The view for displaying the details of a single issue.
+    """
+
     model = Issue
     template_name = "issue_details.html"
 
 
 class CreateIssueView(CreateView):
+    """
+    The view for creating a new issue.
+    """
+
     model = Issue
     form_class = IssueForm
     template_name = "create_issue.html"
@@ -36,12 +48,20 @@ class CreateIssueView(CreateView):
 
 
 class UpdateIssueView(UpdateView):
+    """
+    The view for updating an existing issue.
+    """
+
     model = Issue
     form_class = EditForm
     template_name = "update_issue.html"
 
 
 class DeleteIssueView(DeleteView):
+    """
+    The view for deleting an existing issue.
+    """
+
     model = Issue
     template_name = "delete_issue.html"
     success_url = reverse_lazy("home")
